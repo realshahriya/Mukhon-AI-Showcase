@@ -1,7 +1,7 @@
 # MUKHON AI Guardian v1 (মুখন এআই গার্ডিয়ান) — Empirical Benchmark Report
 
 > **Model Identifier:** [`realshahriya/mukhon-ai-guardian-v1`](https://huggingface.co/realshahriya/mukhon-ai-guardian-v1)  
-> **Interactive Space Demo:** [`realshahriya/mukhon-ai-guardian-demo`](https://huggingface.co/spaces/realshahriya/mukhon-ai-guardian-demo)  
+> **Interactive Space Benchmark:** [`realshahriya/mukhon-ai-guardian-benchmark`](https://huggingface.co/spaces/realshahriya/mukhon-ai-guardian-benchmark)  
 > **Architecture:** ELECTRA 110M Sequence Classifier (BanglaBERT backbone fine-tuned on Bengali & Romanized Banglish adversarial social data)  
 > **Serving Mode:** ONNX Opset 18 CPU Runtime (`onnxruntime`) & Fastify L1 Cache Daemon  
 > **Evaluation Date:** November 22, 2026 • Host Environment: Linux x86_64 CPU (Zero GPU dependency)
@@ -13,7 +13,7 @@
 MUKHON AI Guardian v1 serves as the sovereign frontline content filter and anti-fraud shield for the MUKHON social network. The model operates as a high-speed line-rate gatekeeper and specialized cultural oracle for complex downstream LLMs.
 
 | Dimension | Measured Value | Production Target | Status |
-|---|:---:|:---:|:---:|
+| --- | :---: | :---: | :---: |
 | **Top-1 Accuracy** | **97.22%** | $\ge 95.0\%$ | ✅ Exceeded |
 | **Mean Confidence** | **97.35%** | $\ge 90.0\%$ | ✅ Exceeded |
 | **p50 Latency (CPU)** | **29.46 ms** | $\le 40.0\text{ ms}$ | ✅ Optimal |
@@ -33,7 +33,7 @@ The evaluation suite tested 36 adversarial and colloquial test cases spanning Be
 ### Per-Class Evaluation Breakdown
 
 | Target Class | Support | Precision | Recall | F1-Score | Production Action |
-|---|:---:|:---:|:---:|:---:|---|
+| --- | :---: | :---: | :---: | :---: | --- |
 | **`CLEAN`** | 9 | **1.000** | **1.000** | **1.000** | `ALLOW` (Frictionless feed pass) |
 | **`TOXIC_ABUSE`** | 9 | **1.000** | **1.000** | **1.000** | `FLAG_TOXIC` (Filtered/Hidden) |
 | **`SCAM_FRAUD`** | 9 | **0.900** | **1.000** | **0.947** | `FLAG_SCAM` (Listing/Chat Block) |
@@ -49,7 +49,7 @@ The evaluation suite tested 36 adversarial and colloquial test cases spanning Be
 Below are empirical test results across distinct linguistic variations encountered in Bangladeshi social platforms:
 
 | Input Text | Script / Dialect Mode | Predicted Class | Confidence | System Action |
-|---|---|:---:|:---:|---|
+| --- | --- | :---: | :---: | --- |
 | `"Bondhura shobai kemon achen? Ajke bikel bela chayer adda hobe!"` | Romanized Banglish | `CLEAN` | 99.1% | `ALLOW ✅` |
 | `"কোনো advance payment লাগবে না ভাইয়া, ডেলিভারি ম্যানের সামনে চেক করে cash on delivery দেবেন।"` | Bengali + English (COD Safe) | `CLEAN` | 99.2% | `ALLOW ✅` |
 | `"kire abal"` | Colloquial Street Slang | `TOXIC_ABUSE` | 96.8% | `FLAG_TOXIC 🚫` |
@@ -83,7 +83,8 @@ flowchart TD
     I --> J["Generate Community Advisory Note & Fact-Check Badge"]
 ```
 
-### Architectural Benefits:
+### Architectural Benefits
+
 1. **$0 Frontline Cost:** Over 95% of social posts never invoke paid third-party LLM APIs.
 2. **Sub-30ms User Experience:** Posts appear instantaneously in the user's feed without waiting for multi-second generative LLM passes.
 3. **Street-Level Grounding:** The main foundation LLM queries the 110M Guardian tool whenever it encounters unfamiliar phonetic Banglish slang, ensuring zero cultural hallucination.

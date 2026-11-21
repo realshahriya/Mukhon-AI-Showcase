@@ -11,7 +11,7 @@
 <br/><br/>
 
 <!-- Primary Redirect Badges -->
-<a href="https://huggingface.co/spaces/realshahriya/mukhon-ai-guardian-demo"><img src="https://img.shields.io/badge/%F0%9F%A7%AA%20Interactive%20Demo-Hugging%20Face%20Space-8B5CF6?style=for-the-badge&logo=huggingface&logoColor=white" /></a>
+<a href="https://huggingface.co/spaces/realshahriya/mukhon-ai-guardian-benchmark"><img src="https://img.shields.io/badge/%F0%9F%A7%AA%20Benchmark%20Suite-Hugging%20Face%20Space-8B5CF6?style=for-the-badge&logo=huggingface&logoColor=white" /></a>
 <a href="https://huggingface.co/realshahriya/butter-w1"><img src="https://img.shields.io/badge/%F0%9F%A7%88%20Butter%20W1%20%2F%20W1.1-Hugging%20Face%20Hub-F59E0B?style=for-the-badge&logo=huggingface&logoColor=white" /></a>
 <a href="https://huggingface.co/realshahriya/mukhon-ai-guardian-v1"><img src="https://img.shields.io/badge/%F0%9F%9B%A1%EF%B8%8F%20Guardian%20v1%20(ONNX)-Hugging%20Face%20Hub-10B981?style=for-the-badge&logo=huggingface&logoColor=white" /></a>
 <a href="https://huggingface.co/datasets/realshahriya/mukhon-banglish-moderation"><img src="https://img.shields.io/badge/%F0%9F%93%9A%20Bilingual%20Dataset%20(4K)-Hugging%20Face%20Hub-3B82F6?style=for-the-badge&logo=huggingface&logoColor=white" /></a>
@@ -54,10 +54,10 @@
       <td align="center"><a href="https://huggingface.co/realshahriya/mukhon-ai-guardian-v1"><strong>Open Model ↗</strong></a></td>
     </tr>
     <tr>
-      <td><strong>🧪 MUKHON AI Guardian Live Space</strong></td>
+      <td><strong>🧪 MUKHON AI Guardian Benchmark Space</strong></td>
       <td align="center"><code>Interactive Web</code><br/>Static Space</td>
-      <td><strong>Live Web Playground:</strong> Zero-install real-time testing, 24-case adversarial benchmark gauntlet, interactive custom input evaluation</td>
-      <td align="center"><a href="https://huggingface.co/spaces/realshahriya/mukhon-ai-guardian-demo"><strong>Launch Space ↗</strong></a></td>
+      <td><strong>Official Benchmark Explorer:</strong> 36-case adversarial gauntlet, latency percentiles, confusion breakdowns, and colloquial stress-test inspector</td>
+      <td align="center"><a href="https://huggingface.co/spaces/realshahriya/mukhon-ai-guardian-benchmark"><strong>Launch Space ↗</strong></a></td>
     </tr>
     <tr>
       <td><strong>📚 MUKHON Bilingual Dataset</strong></td>
@@ -216,10 +216,13 @@ print(ds)
 <summary><strong>💻 Interactive Terminal Tester & Backend Fastify Quickstart</strong></summary>
 
 #### Interactive Terminal Runner (CPU ONNX)
+
 Run live instant inference directly in your terminal:
+
 ```bash
 npm run ai:test
 ```
+
 ```
 📝 Enter text (বাংলিশ / বাংলা): kire abal
    🔍 Verdict:    TOXIC_ABUSE (96.8%)
@@ -227,6 +230,7 @@ npm run ai:test
 ```
 
 #### Fastify Microservice Call (`POST /api/v1/posts/guardian-scan`)
+
 ```javascript
 const res = await fetch("http://127.0.0.1:5001/api/v1/posts/guardian-scan", {
   method: "POST",
@@ -265,7 +269,7 @@ console.log(data.verdict, data.confidence); // SCAM_FRAUD, 0.994
 The guardian model is specifically trained to excel where general foundation LLMs stumble: colloquial street slang, regional spellings, and deceptive local transaction patterns.
 
 | Test Input | Mode / Dialect | Predicted Class | Confidence | Platform Defense Action |
-|:---|:---|:---:|:---:|:---|
+| :--- | :--- | :---: | :---: | :--- |
 | `"Bondhura shobai kemon achen? Ajke bikel bela chayer adda hobe!"` | Romanized Banglish | `CLEAN` | 99.1% | `ALLOW ✅` |
 | `"kire abal"` | Street Slang | `TOXIC_ABUSE` | 96.8% | `FLAG_TOXIC 🚫` |
 | `"areee hada marka sele"` | Regional Slang ("হাদা মার্কা") | `TOXIC_ABUSE` | 81.3% | `FLAG_TOXIC 🚫` |
